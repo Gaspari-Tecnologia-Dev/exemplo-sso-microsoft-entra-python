@@ -8,18 +8,24 @@ Aplicação mínima em **Flask** que **não tem tela de usuário e senha**: o ac
 
 ## Como o login funciona (resumo)
 
-```
-Navegador          Sua aplicação (Flask)             Microsoft Entra ID
-    | GET /login ------->|                                   |
-    |                    | gera state + nonce + PKCE         |
-    |<-- 302 para /authorize ------------------------------->|
-    |                                  usuário entra (senha, MFA, acesso condicional)
-    |<-- 302 /auth/callback?code=...&state=... --------------|
-    | GET /auth/callback>|                                   |
-    |                    | troca code por tokens (+ PKCE) -->|
-    |                    |<-- id_token --------------------- |
-    |                    | valida o id_token                 |
-    |<-- cookie de sessão + 302 /profile                     |
+```mermaid
+sequenceDiagram
+    autonumber
+    participant B as Navegador
+    participant A as Aplicação (Flask)
+    participant E as Microsoft Entra ID
+
+    B->>A: GET /login
+    Note over A: gera state, nonce e PKCE
+    A-->>B: 302 para o /authorize da Microsoft
+    B->>E: pedido de autorização
+    Note over B,E: usuário entra (senha, MFA, acesso condicional)
+    E-->>B: 302 para /auth/callback com code e state
+    B->>A: GET /auth/callback
+    A->>E: troca o code por tokens (com PKCE)
+    E-->>A: id_token
+    Note over A: valida o id_token
+    A-->>B: cookie de sessão e 302 para /profile
 ```
 
 Diagrama detalhado e o que cada parâmetro faz: [docs/fluxo.md](docs/fluxo.md).
