@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if user %}
+    <p>Ola, <strong>{{ user.name or user.username }}</strong>.</p>
+    <p><a href="{{ url_for('profile') }}">Ver meu perfil</a> &middot; <a href="{{ url_for('logout') }}">Sair</a></p>
+  {% else %}
+    <p>Esta aplicacao nao tem tela de usuario e senha. O acesso e feito pela conta Microsoft da empresa.</p>
+    <p><a class="btn" href="{{ url_for('login') }}">Entrar com Microsoft</a></p>
+  {% endif %}
+{% endblock %}

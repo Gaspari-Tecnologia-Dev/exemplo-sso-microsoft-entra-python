@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <p>Pagina protegida. Estes dados vieram do ID token validado:</p>
+  <table>
+    <tr><td>Nome</td><td>{{ user.name }}</td></tr>
+    <tr><td>Usuario (UPN)</td><td>{{ user.username }}</td></tr>
+    <tr><td>Object ID (<code>oid</code>)</td><td>{{ user.oid }}</td></tr>
+    <tr><td>Tenant (<code>tid</code>)</td><td>{{ user.tid }}</td></tr>
+  </table>
+  <p><a href="{{ url_for('index') }}">Inicio</a> &middot; <a href="{{ url_for('logout') }}">Sair</a></p>
+{% endblock %}

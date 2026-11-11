@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Exemplo SSO Microsoft Entra{% endblock %}</title>
+  <style>body{font-family:system-ui,sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem;color:#333}
+h1{margin-bottom:.2rem}.bar{height:4px;background:linear-gradient(90deg,#4285F4 25%,#EA4335 25% 50%,#FBBC05 50% 75%,#00A95C 75%);margin:1rem 0 1.5rem}
+a.btn{display:inline-block;background:#4285F4;color:#fff;padding:.6rem 1.1rem;border-radius:6px;text-decoration:none}
+table{border-collapse:collapse}td{padding:.3rem .8rem .3rem 0}td:first-child{color:#6b7280}code{background:#f3f6fb;padding:0 .25rem}
+.err{border-left:4px solid #EA4335;padding:.5rem 1rem;background:#fdf2f1}</style>
+</head>
+<body>
+  <h1>Exemplo de SSO com Microsoft Entra ID</h1>
+  <div class="bar"></div>
+  {% block content %}{% endblock %}
+</body>
+</html>

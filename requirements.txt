@@ -1,0 +1,4 @@
+Flask>=3.1,<4
+msal>=1.39,<2
+PyJWT[crypto]>=2.10,<3
+python-dotenv>=1.0,<2
